@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontak | Warung Salfah Kinasih</title>
+  <link rel="icon" href="BAHAN/logo.png" type="image/png" />
+  
+  <!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    body {   
+      font-family: 'Georgia', serif;
+      background-color: #fdfbf9;
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: 'JANA____.';
+      src: url('BAHAN/JANA____.TTF') format('truetype');
+    }
+
+    .top-header {
+      background-color: #9c805d;
+      text-align: center;
+      padding: 20px 0 10px;
+    }
+
+    .top-header img {
+      height: 120px;
+    }
+
+    .main-navbar {
+      background-color: #9c805d;
+    }
+
+    .main-navbar .nav-link {
+      font-family: 'JANA____.', Georgia, serif;
+      color: white !important;
+      padding: 15px 20px;
+    }
+
+    .main-navbar .nav-link:hover {
+      color: #f8e9d0 !important;
+    }
+
+    .contact-section {
+      padding: 60px 20px;
+    }
+
+    .contact-section h2 {
+      font-family: 'JANA____.', Georgia, serif;
+      color: #4a3c2a;
+      margin-bottom: 30px;
+    }
+
+    .contact-info {
+      background-color: #fff;
+      border-left: 5px solid #9c805d;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-info p {
+      margin: 8px 0;
+    }
+
+    .map-responsive {
+      overflow: hidden;
+      padding-bottom: 56.25%;
+      position: relative;
+      height: 0;
+    }
+
+    .map-responsive iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .btn-kirim {
+      background-color: #a47551;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .btn-kirim:hover {
+      background-color: #8b6043;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="top-header">
+    <img src="BAHAN/logo.png" alt="Logo Warung">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg main-navbar">
+    <div class="container justify-content-between">
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="reservasi.html">Reservasi & Pemesanan</a></li>
+          <li class="nav-item"><a class="nav-link" href="fasilitas.html">Fasilitas</a></li>
+          <li class="nav-item"><a class="nav-link" href="tentangkami.html">Tentang Kami</a></li>
+          <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Kontak Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="row align-items-start">
+        <!-- Kontak Info -->
+        <div class="col-md-6 mb-5" data-aos="fade-up" data-aos-duration="1000">
+          <h2><strong>Kontak Kami</strong></h2>
+          <div class="contact-info">
+            <p><i class="bi bi-envelope-fill"></i> Email: salfahkinasih@warung.co.id</p>
+            <p><i class="bi bi-whatsapp"></i> WhatsApp: 0812-6063-8230</p>
+            <p><i class="bi bi-clock"></i> Jam Buka:</p>
+            <p><strong>Senin - Minggu, 10.00 - 21.00 WIB</strong></p>
+          </div>
+
+          <!-- Kotak Saran -->
+          <div class="mt-4">
+            <h5><strong>Kotak Saran</strong></h5>
+            <form>
+              <div class="mb-3">
+                <textarea class="form-control" rows="4" placeholder="Tulis saran, kritik, atau pesan Anda di sini..." style="resize: none;"></textarea>
+              </div>
+              <button type="submit" class="btn-kirim">Kirim</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Google Maps -->
+        <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+          <h2><strong>Lokasi Kami</strong></h2>
+          <div class="map-responsive">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.0048208345047!2d98.72183027473243!3d3.586367296387791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30313100415eafeb%3A0x4d7af884088f2ec9!2sRUMAH%20SALSABILA%20THALIA!5e0!3m2!1sid!2sid!4v1752504356448!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background-color: #f9f6f1; padding: 60px 0 30px; color: #4a3c2a;">
+    <div class="container text-center">
+      <img src="BAHAN/logo.png" alt="Logo" style="height: 80px;">
+      <p class="mt-3">© 2025 Warung Salfah Kinasih — <em>"Mboten namung rasa, nanging warisan budaya."</em></p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS & AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

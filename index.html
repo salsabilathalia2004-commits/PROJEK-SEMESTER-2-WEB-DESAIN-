@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utama | Warung Salfah Kinasih</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="BAHAN/logo.png" type="image/png" />
+
+  <!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <style>
+   /* ============ GAYA DASAR SELURUH HALAMAN ============ */
+body {
+  margin: 0; /* Menghilangkan margin default browser */
+  font-family: 'Georgia', serif; /* Menggunakan font Georgia sebagai font utama halaman */
+  background-color: #fdfbf9; /* Memberi warna latar belakang krem yang lembut */
+}
+
+/* ============ IMPORT FONT KUSTOM ============ */
+@font-face {
+  font-family: 'JANA____.'; /* Nama font custom yang akan digunakan */
+  src: url('BAHAN/JANA____.TTF') format('truetype'); /* Mengambil file font dari folder BAHAN */
+}
+
+/* ============ BAGIAN HEADER ATAS (LOGO) ============ */
+.top-header {
+  background-color: #9c805d; /* Warna coklat khas branding Salfah Kinasih */
+  padding: 20px 0 10px; /* Memberikan ruang atas dan bawah untuk logo */
+  text-align: center; /* Logo ditengahkan */
+}
+
+.top-header img {
+  height: 120px; /* Menetapkan tinggi logo */
+}
+
+/* ============ NAVBAR UTAMA ============ */
+.main-navbar {
+  background-color: #9c805d; /* Warna latar navbar sama dengan header */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Memberi bayangan lembut di bawah navbar */
+}
+
+.main-navbar .nav-link {
+  font-family: 'JANA____.', Georgia, serif; /* Menggunakan font khas */
+  color: white !important; /* Warna teks putih dan bersifat penting agar tidak ditimpa CSS lain */
+  font-weight: 500; /* Sedikit bold agar tegas */
+  padding: 15px 20px; /* Ruang di sekitar teks menu */
+}
+
+.main-navbar .nav-link:hover {
+  color: #f8e9d0 !important; /* Warna saat hover berubah menjadi krem */
+}
+
+/* ============ IKON FIXED DI POJOK KANAN ATAS (SEARCH & CART) ============ */
+.fixed-icons {
+  position: fixed; /* Tetap di layar meskipun halaman discroll */
+  top: 10px;
+  right: 20px;
+  z-index: 1050; /* Lebih tinggi dari elemen lain agar tidak tertutup */
+  display: flex;
+  gap: 15px; /* Jarak antar ikon */
+}
+
+.fixed-icons a {
+  color: white; /* Ikon berwarna putih */
+  background-color: #9c805d; /* Latar ikon mengikuti tema coklat */
+  padding: 10px;
+  border-radius: 50%; /* Ikon bulat */
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: background-color 0.3s; /* Efek transisi saat hover */
+}
+
+.fixed-icons a:hover {
+  background-color: #81684e; /* Saat di-hover warnanya sedikit lebih gelap */
+}
+
+/* ============ BAGIAN HERO UTAMA (FULLSCREEN) ============ */
+.hero {
+  position: relative; /* Untuk posisi absolut dari teks di dalamnya */
+  width: 100%;
+  height: 100vh; /* Tingginya 100% tinggi layar */
+  background: url('BAHAN/restoranoutdoor.png') center center/cover no-repeat;
+  /* Background gambar besar, berada di tengah dan menutupi area */
+  animation: fadeInHero 2.5s ease-in-out forwards; /* Efek fade saat tampil pertama */
+  opacity: 0; /* Awalnya tidak terlihat */
+}
+
+/* ============ TEKS DI TENGAH GAMBAR HERO ============ */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Untuk posisi benar-benar di tengah */
+  color: white;
+  text-align: center;
+  opacity: 0;
+  animation: slideUpText 1.8s ease-in-out 2s forwards; /* Animasi muncul dengan delay */
+  z-index: 2; /* Di atas background */
+  padding: 0 20px;
+  max-width: 90%;
+}
+
+.hero-text h1 {
+  font-size: 3rem; /* Ukuran judul besar */
+  font-family: 'JANA____.', Georgia, serif; /* Font khas */
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); /* Efek bayangan biar teks terlihat di atas gambar */
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4); /* Bayangan juga untuk subtitle */
+}
+
+.hero-text a {
+  background-color: #9c805d; /* Warna tombol sesuai tema */
+  color: white;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Efek hover */
+}
+
+.hero-text a:hover {
+  background-color: #81684e;
+  transform: scale(1.05); /* Sedikit membesar saat di-hover */
+}
+
+/* ============ ANIMASI UNTUK HERO ============ */
+@keyframes fadeInHero {
+  0% {
+    opacity: 0;
+    transform: scale(1.05); /* Sedikit diperbesar */
+    filter: blur(8px); /* Agak blur dulu */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes slideUpText {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -30%); /* Posisi awal lebih tinggi */
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Kembali ke tengah */
+  }
+}
+
+/* ============ WRAPPER UNTUK BAGIAN MENU SPESIAL ============ */
+.spesial-wrapper {
+  position: relative; /* Untuk posisi hiasan gunungan */
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+
+.hiasan-gunungan.kiri {
+  left: 0;
+}
+
+.hiasan-gunungan.kanan {
+  right: 0;
+  transform: scaleX(-1); /* Dibalik horizontal agar simetris */
+}
+
+/* Hiasan tidak ditampilkan di layar kecil (HP) */
+@media (max-width: 768px) {
+  .hiasan-gunungan {
+    display: none;
+  }
+}
+
+/* ============ BOX ULASAN (REVIEW & LOGO HALAL) ============ */
+.review-box {
+  background-color: #f2e9dc; /* Warna latar box ulasan */
+  border-radius: 12px;
+  padding: 30px 20px;
+  margin: 40px auto;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Georgia', serif;
+  color: #5c4632;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Bayangan lembut */
+}
+
+.review-item {
+  text-align: center;
+  flex: 1;
+}
+
+.review-item img {
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.review-item .stars {
+  font-size: 2rem;
+  color: #e4b13f; /* Warna bintang */
+}
+
+.review-item .count {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.review-item .label {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+/* ============ HERO MINI UNTUK PROMO FASILITAS (AULA) ============ */
+.hero-mini {
+  animation: fadeInHero 2.5s ease-in-out forwards; /* Gunakan animasi yang sama */
+  opacity: 0;
+  margin-bottom: 60px;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Ikon Search & Cart -->
+	<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+	  <div class="modal-dialog modal-xl">
+		<div class="modal-content">
+		  <div class="modal-header bg-light">
+			<h5 class="modal-title" id="searchModalLabel">🔍 Pencarian Menu</h5>
+		  </div>
+		  <div class="modal-body">
+			<form class="d-flex justify-content-center align-items-center flex-column gap-3">
+			  <!-- Input Pencarian -->
+			  <div class="input-group" style="max-width: 600px; width: 100%;">
+				<span class="input-group-text bg-white border-end-0">
+				  <i class="bi bi-search" style="color: #9c805d;"></i>
+				</span>
+				<input type="text" class="form-control border-start-0" placeholder="Cari menu favoritmu..." style="border-color: #9c805d;">
+			  </div>
+
+			  <!-- Filter Opsional (Misalnya: kategori) -->
+			  <select class="form-select" style="max-width: 600px; border-color: #9c805d;">
+				<option selected>Pilih Kategori</option>
+				<option value="1">Makanan</option>
+				<option value="2">Minuman</option>
+				<option value="3">Paket Hemat</option>
+			  </select>
+
+			  <!-- Tombol Cari -->
+			  <button type="submit" class="btn" style="background-color: #9c805d; color: white; padding: 10px 30px; font-weight: bold; border-radius: 8px;">
+				Cari Sekarang
+			  </button>
+			</form>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+
+	<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true" data-bs-backdrop="false" data-bs-keyboard="false">
+	  <div class="modal-dialog modal-xl">
+		<div class="modal-content">
+		  <div class="modal-header bg-light">
+			<h5 class="modal-title" id="orderModalLabel">📝 Formulir Pemesanan</h5>
+		  </div>
+		  <div class="modal-body">
+			<form id="orderForm" class="row g-3">
+			  <!-- Nama -->
+			  <div class="col-md-6">
+				<label for="nama" class="form-label">Nama Lengkap</label>
+				<input type="text" class="form-control" id="nama" required>
+			  </div>
+
+			  <!-- No WA -->
+			  <div class="col-md-6">
+				<label for="whatsapp" class="form-label">Nomor WhatsApp</label>
+				<input type="tel" class="form-control" id="whatsapp" required>
+			  </div>
+
+			  <!-- Alamat -->
+			  <div class="col-12">
+				<label for="alamat" class="form-label">Alamat Lengkap</label>
+				<textarea class="form-control" id="alamat" rows="2" required></textarea>
+			  </div>
+
+			  <!-- Pilihan Menu -->
+			  <div class="col-md-6">
+				<label for="menu" class="form-label">Menu yang Dipesan</label>
+				<select class="form-select" id="menu" required>
+				  <option selected disabled>Pilih Menu</option>
+				  <option value="Garang Asem Ayam">Garang Asem Ayam</option>
+				  <option value="Wedang Jahe">Wedang Jahe</option>
+				  <option value="Sate Klatak">Sate Klatak</option>
+				</select>
+			  </div>
+
+			  <!-- Jumlah -->
+			  <div class="col-md-3">
+				<label for="jumlah" class="form-label">Jumlah</label>
+				<input type="number" class="form-control" id="jumlah" value="1" min="1" required>
+			  </div>
+
+			  <!-- Catatan -->
+			  <div class="col-12">
+				<label for="catatan" class="form-label">Catatan Tambahan (Opsional)</label>
+				<textarea class="form-control" id="catatan" rows="2"></textarea>
+			  </div>
+			</form>
+		  </div>
+		  <div class="modal-footer d-flex justify-content-between">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+			<button type="submit" form="orderForm" class="btn btn-primary">Kirim Pesanan</button>
+		  </div>
+		</div>
+	  </div>
+</div>
+
+	<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+	  <div class="modal-dialog modal-xl">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="cartModalLabel">Informasi Keranjang</h5>
+		  </div>
+		 <div class="modal-body">
+			  <!-- Tabel Keranjang Belanja -->
+			  <div class="table-responsive">
+				<table class="table align-middle" id="cartTable">
+				  <thead class="table-light">
+					<tr>
+					  <th>Produk</th>
+					  <th>Jumlah</th>
+					  <th>Harga Satuan</th>
+					  <th>Subtotal</th>
+					  <th></th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<!-- Item 1 -->
+					<tr data-id="1">
+					  <td>
+						<div class="d-flex align-items-center gap-3">
+						  <img src="BAHAN/sateklathak.jpg" alt="Sate Klatak" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+						  <span>Sate Klatak</span>
+						</div>
+					  </td>
+					  <td><input type="number" class="form-control quantity" value="2" min="1" style="width: 80px;"></td>
+					  <td class="price" data-price="25000">Rp25.000</td>
+					  <td class="subtotal">Rp50.000</td>
+					  <td><button class="btn btn-sm btn-outline-danger delete-item">Hapus</button></td>
+					</tr>
+					<!-- Item 2 -->
+					<tr data-id="2">
+					  <td>
+						<div class="d-flex align-items-center gap-3">
+						  <img src="BAHAN/wedangjahe.jpeg" alt="Wedang Jahe" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
+						  <span>Wedang Jahe</span>
+						</div>
+					  </td>
+					  <td><input type="number" class="form-control quantity" value="1" min="1" style="width: 80px;"></td>
+					  <td class="price" data-price="10000">Rp10.000</td>
+					  <td class="subtotal">Rp10.000</td>
+					  <td><button class="btn btn-sm btn-outline-danger delete-item">Hapus</button></td>
+					</tr>
+				  </tbody>
+				</table>
+			  </div>
+
+			  <!-- Total -->
+			  <div class="d-flex justify-content-end mt-4">
+				<div class="text-end">
+				  <h5>Total Belanja:</h5>
+				  <h4 id="totalPrice" style="color: #9c805d;"><strong>Rp60.000</strong></h4>
+				</div>
+			  </div>
+
+			  <!-- Tombol Aksi -->
+			  <div class="d-flex justify-content-end mt-3 gap-2">
+				<button class="btn btn-success">Lanjutkan Pembayaran</button>
+				<button class="btn btn-outline-danger" id="clearCart">Kosongkan Keranjang</button>
+			  </div>
+			</div>
+
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+
+	<div class="fixed-icons">
+	  <a href="#" id="btnSearch"><i class="bi bi-search"></i></a>
+	  <a href="#" id="btnCart"><i class="bi bi-cart-fill"></i></a>
+	</div>
+
+  <!-- Logo -->
+  <div class="top-header">
+    <img src="BAHAN/logo.png" alt="Logo Warung" />
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg main-navbar">
+    <div class="container justify-content-between">
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="reservasi.html">Reservasi & Pemesanan</a></li>
+          <li class="nav-item"><a class="nav-link" href="fasilitas.html">Fasilitas</a></li>
+          <li class="nav-item"><a class="nav-link" href="tentangkami.html">Tentang Kami</a></li>
+          <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Selamat Datang di Warung Salfah Kinasih</h1>
+      <p><i>Ginakarya kanthi katresnan, kanggo srawung lan guyub.</i></p>
+      <a href="menu.html">Lihat Menu</a>
+    </div>
+  </div>
+<br>
+  <!-- Judul Spesial -->
+  <div class="text-center mb-4 position-relative" style="z-index: 2;">
+    <h2 style="font-family: 'JANA____.', Georgia, serif; font-size: 2.5rem; color: #9c805d;">
+      ~ Spesial Hari Ini ~
+    </h2>
+  </div>
+
+  <!-- 3 Card Menu -->
+  <div class="d-flex justify-content-center gap-4 flex-wrap position-relative" style="z-index: 2;">
+  <!-- CARD 1 -->
+  <div class="card" style="width: 18rem;">
+    <img src="BAHAN/garangasemayam.jpeg" class="card-img-top" alt="Garang Asem" style="height: 200px; object-fit: cover;">
+    <div class="card-body">
+      <h5 class="card-title">Garang Asem Ayam</h5>
+      <p class="card-text">Masakan khas Jawa dengan kuah segar dan aroma daun pisang.</p>
+      <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#orderModal" style="background-color: #9c805d; color: white; font-weight: 600; border-radius: 6px;">Pesan Sekarang</a>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="card" style="width: 18rem;">
+    <img src="BAHAN/wedangjahe.jpeg" class="card-img-top" alt="Rawon Daging" style="height: 200px; object-fit: cover;">
+    <div class="card-body">
+      <h5 class="card-title">Wedang Jahe</h5>
+      <p class="card-text">Sup daging berkuah hitam khas Jawa Timur dengan kluwek.</p>
+      <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#orderModal" style="background-color: #9c805d; color: white; font-weight: 600; border-radius: 6px;">Pesan Sekarang</a>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="card" style="width: 18rem;">
+    <img src="BAHAN/sateklathak.jpg" class="card-img-top" alt="Sate Klatak" style="height: 200px; object-fit: cover;">
+    <div class="card-body">
+      <h5 class="card-title">Sate Klatak</h5>
+      <p class="card-text">Cocok disantap hangat, penuh cita rasa pedas-asam.</p>
+      <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#orderModal" style="background-color: #9c805d; color: white; font-weight: 600; border-radius: 6px;">Pesan Sekarang</a>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+
+  <!-- Pemesanan -->
+  <div class="text-center mt-5">
+    <h2 style="font-family: 'JANA____.', Georgia, serif; font-size: 2.5rem; color: #9c805d;">
+      ~ Dapat Dipesan Melalui ~
+    </h2>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center gap-4 mt-4 flex-wrap mb-5">
+    <!-- Tas -->
+    <div style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid #9c805d; display: flex; align-items: center; justify-content: center;">
+      <i class="bi bi-bag-fill" style="font-size: 3rem; color: #9c805d;"></i>
+    </div>
+    <!-- ShopeeFood -->
+    <div style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid #9c805d; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+      <img src="BAHAN/Logoshopee.png" alt="ShopeeFood" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+  </div>
+
+  <br >
+
+   <div class="text-center mb-4 position-relative" style="z-index: 2;">
+      <h2 style="font-family: 'JANA____.', Georgia, serif; font-size: 2.7rem; color: #9c805d;">
+        ~ Cerita Kelezatan Kami ~
+      </h2>
+    </div>
+
+<div class="container text-center" style="max-width: 900px; margin: auto; font-family: 'JANA____.', Georgia, serif; color: #5c4632; font-size: 1.25rem; line-height: 2;">
+  <p><em>Dari dapur sederhana, kami hadirkan rasa yang <strong>ora mung enak ning ilat</strong>, nanging <strong>nyentuh ati</strong>.</em></p>
+
+  <p>Setiap bumbu kami tumbuk dengan <strong>rasa tresna</strong>, setiap masakan kami olah dengan semangat <em>nguri-uri kabudayan</em>.  
+  Di balik sepiring <em>rawon</em>, <em>garang asem</em>, atau <em>sambel terasi</em>, ana cerita tentang <strong>rumah, ibu, dan tanah kelahiran</strong>.</p>
+
+  <p><strong>Warung Salfah Kinasih</strong> bukan sekadar tempat makan —  
+  iki adalah <em>panggonan kanggo srawung</em>, <em>ngeling-eling rasa lawas</em>, lan <em>nyipta kebersamaan anyar</em>.</p>
+
+  <p><strong>Mampirlah, dan rasakna...</strong><br>
+  <em>"Rasa Jawa sejati, saka ati."</em></p>
+</div>
+
+<br>
+
+<!-- Box Review Halal & Ulasan -->
+<div class="review-box">
+  <!-- Google Review -->
+  <div class="review-item">
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="count">1000+</div>
+    <div class="label">Ulasan Google</div>
+  </div>
+
+  <!-- Halal Logo -->
+<div class="review-item">
+  <img src="BAHAN/logohalal-removebg-preview.png" alt="Logo Halal" style="height: 130px;">
+</div>
+
+
+
+  <!-- Shopee Review -->
+  <div class="review-item">
+    <div class="stars">⭐⭐⭐⭐⭐</div>
+    <div class="count">1000+</div>
+    <div class="label">Ulasan Shopee</div>
+  </div>
+</div>
+
+<br >
+<!-- Mini Hero Section Fasilitas -->
+<div class="hero hero-mini" style="height: 380px; background: url('BAHAN/aula.jpeg') center center/cover no-repeat;">
+  <div class="hero-text">
+    <h1>Aula Kebersamaan</h1>
+    <p><i>Aula kami bukan sekadar ruangan, melainkan ruang kehangatan yang diciptakan untuk menyatukan cerita, tawa, dan kebersamaan. 
+  Di sinilah keluarga berkumpul, sahabat saling berbagi, dan momen-momen istimewa tumbuh menjadi kenangan yang tak terlupakan. 
+  Setiap sudutnya kami hadirkan dengan sentuhan budaya dan ketulusan, demi menciptakan pengalaman makan yang lebih dari sekadar rasa — namun juga rasa memiliki.</i></p>
+    <a href="fasilitas.html">Lihat Fasilitas</a>
+  </div>
+</div>
+
+<footer style="background-color: #f9f6f1; padding: 60px 0 30px; font-family: Georgia, serif; color: #4a3c2a;">
+  <div class="container">
+    <div class="row justify-content-between text-center text-md-start">
+      
+      <!-- Kontak -->
+      <div class="col-md-4 mb-4">
+        <h5><strong>Kontak Kami</strong></h5>
+        <p>Email: salfahkinasih@warung.co.id</p>
+        <p>WhatsApp: 0812-6063-8230</p>
+        <p>Jam Buka:<br><strong>Senin - Minggu, 10.00 - 21.00 WIB</strong></p>
+      </div>
+
+      <!-- Pemesanan -->
+      <div class="col-md-4 mb-4">
+        <h5><strong>Pemesanan Online</strong></h5>
+        <p>Tersedia di:</p>
+        <img src="BAHAN/Logoshopee.png" alt="ShopeeFood" style="height: 40px; margin-top: 5px;">
+      </div>
+
+      <!-- Logo & Sosial Media -->
+      <div class="col-md-4 text-center text-md-end">
+        <img src="BAHAN/logo.png" alt="Logo Salfah Kinasih" style="height: 80px; margin-bottom: 10px;">
+        <p>Ikuti kami:</p>
+        <div style="display: flex; justify-content: center; justify-content: flex-end; gap: 12px;">
+          <a href="https://wa.me/6281260638230?text"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" width="28"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="28"></a>
+          <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Instagram" width="28"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kotak Saran -->
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <h5 class="mb-3"><strong>Kotak Saran</strong></h5>
+        <form>
+          <div class="mb-3">
+            <textarea class="form-control" rows="4" placeholder="Tulis saran, kritik, atau pesan Anda di sini..." style="resize: none; max-width: 100%; width: 100%;"></textarea>
+          </div>
+          <button type="submit" class="btn" style="background-color: #a47551; color: white; padding: 8px 24px; border-radius: 8px;">
+            Kirim
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <hr style="margin-top: 40px; border-color: #cdb89f;" />
+    <p class="text-center" style="color: #7b6a55;">© 2025 Warung Salfah Kinasih — "Mboten namung rasa, nanging warisan budaya."</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  document.getElementById('btnSearch').addEventListener('click', function (e) {
+    e.preventDefault();
+    var searchModal = new bootstrap.Modal(document.getElementById('searchModal'));
+    searchModal.show();
+  });
+
+  document.getElementById('btnCart').addEventListener('click', function (e) {
+    e.preventDefault();
+    var cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+    cartModal.show();
+  });
+</script>
+
+<script>
+  document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nama = document.getElementById('nama').value;
+    const whatsapp = document.getElementById('whatsapp').value;
+    const alamat = document.getElementById('alamat').value;
+    const menu = document.getElementById('menu').value;
+    const jumlah = document.getElementById('jumlah').value;
+    const catatan = document.getElementById('catatan').value;
+
+    const pesan = `Halo, saya ingin memesan:\n\nNama: ${nama}\nWA: ${whatsapp}\nAlamat: ${alamat}\nMenu: ${menu}\nJumlah: ${jumlah}\nCatatan: ${catatan || '-'}\n\nTerima kasih.`;
+    const url = `https://wa.me/6281260638230?text=${encodeURIComponent(pesan)}`; // Ganti nomor WA kamu
+
+    window.open(url, '_blank');
+  });
+</script>
+
+
+</body>
+</html>
